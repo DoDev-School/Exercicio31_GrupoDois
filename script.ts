@@ -33,11 +33,52 @@
 
 let alunos: string[] = []
 class Aluno {
-  Nome: string;
-  Idade: number;
-  Altura: number;
-  Sexo: string;
-  constructor()
+  #Nome: string;
+ #Idade: number;
+  #Altura: number;
+  #Sexo: string;
+  constructor(nome,idade,altura,sexo){
+    
+  }
+setNome(nome:string){
+  this.#Nome=nome
+}
+getNome(){
+  return this.#Nome
+}
+
+setIdade(idade:number){
+  this.#Idade=idade
+}
+getIdade(){
+  return this.#Idade
+}
+setAltura(altura:number){
+  this.#Altura=altura
+}
+getAltura(){
+  return this.#Altura
+}
+setSexo(sexo:string){
+  this.#Sexo=sexo
+}
+getSexo(){
+  return this.#Sexo
+}
+QuantidadeDeAlunos(){
+
+}
+RetornoMaiorAltura(){
+
+}
+
   
+}
+  
+}
+  
+  
+}
+
 
 }
