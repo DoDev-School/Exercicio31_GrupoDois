@@ -133,6 +133,23 @@ class Aluno {
     return NomeAlunoMenorIdade
   }
 
+  ProcurarIdadeEAlturaAlunos(): string{
+    let NomeAluno: string
+
+    Alunos.forEach(Verificate)
+
+    return NomeAluno
+
+    function Verificate(item: object){
+
+      if(item.GetIdade() % 2 == 0 || item.GetAltura() > 1.90){
+        NomeAluno = item.GetNome()
+      }
+
+    }
+    
+  }
+
   DefinirMedia(): number{
 
     for(let i = 0; i < Alunos.length; i++){
@@ -146,7 +163,7 @@ class Aluno {
 }
 
 
-let NewAluno1 = new Aluno("Gabriel", 19, 1.70, "Masculino")
+let NewAluno1 = new Aluno("Gabriel", 20, 1.70, "Masculino")
 let NewAluno2 = new Aluno("Arthur", 17, 1.80, "Masculino")
 let NewAluno3 = new Aluno("Joao", 13, 1.65, "Masculino")
 let NewAluno4 = new Aluno("Giovanna", 25, 1.63, "Feminino")
@@ -157,5 +174,6 @@ Alunos.push(NewAluno1, NewAluno2, NewAluno3, NewAluno4, NewAluno5)
 console.log(NewAluno1.ProcurarAlturaAlunos())
 console.log(NewAluno1.ProcurarMaiorAlturaMulheres())
 console.log(NewAluno1.ProcurarAlunoMaisNovoMasculino())
+console.log(NewAluno1.ProcurarIdadeEAlturaAlunos())
 
 

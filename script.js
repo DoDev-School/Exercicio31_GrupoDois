@@ -107,6 +107,16 @@ var Aluno = /** @class */ (function () {
         }
         return NomeAlunoMenorIdade;
     };
+    Aluno.prototype.ProcurarIdadeEAlturaAlunos = function () {
+        var NomeAluno;
+        Alunos.forEach(Verificate);
+        return NomeAluno;
+        function Verificate(item) {
+            if (item.GetIdade() % 2 == 0 || item.GetAltura() > 1.90) {
+                NomeAluno = item.GetNome();
+            }
+        }
+    };
     Aluno.prototype.DefinirMedia = function () {
         for (var i = 0; i < Alunos.length; i++) {
             MediaAltura = MediaAltura + Alunos[i].GetAltura();
@@ -117,12 +127,13 @@ var Aluno = /** @class */ (function () {
     return Aluno;
 }());
 _Aluno_Nome = new WeakMap(), _Aluno_Idade = new WeakMap(), _Aluno_Altura = new WeakMap(), _Aluno_Sexo = new WeakMap();
-var NewAluno1 = new Aluno("Gabriel", 19, 1.70, "Masculino");
+var NewAluno1 = new Aluno("Gabriel", 20, 1.70, "Masculino");
 var NewAluno2 = new Aluno("Arthur", 17, 1.80, "Masculino");
 var NewAluno3 = new Aluno("Joao", 13, 1.65, "Masculino");
-var NewAluno4 = new Aluno("Giovanna", 2, 1.63, "Feminino");
+var NewAluno4 = new Aluno("Giovanna", 25, 1.63, "Feminino");
 var NewAluno5 = new Aluno("Ana", 19, 1.55, "Feminino");
 Alunos.push(NewAluno1, NewAluno2, NewAluno3, NewAluno4, NewAluno5);
 console.log(NewAluno1.ProcurarAlturaAlunos());
 console.log(NewAluno1.ProcurarMaiorAlturaMulheres());
 console.log(NewAluno1.ProcurarAlunoMaisNovoMasculino());
+console.log(NewAluno1.ProcurarIdadeEAlturaAlunos());
