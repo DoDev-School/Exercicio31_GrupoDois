@@ -80,19 +80,57 @@ class Aluno {
     return this.#Sexo
   }
 
-  ProcurarAlturaAlunos(){
+  ProcurarAlturaAlunos(): []{
+    let MediaAltura: number = this.DefinirMedia()
     let AlunosAlturaAbaixoDaMedia: [] = []
 
     for(let i = 0; i < Alunos.length; i++){
-      if(Alunos[i].GetIdade() > 13){
-        if(Alunos[i].GetAltura() < Alunos[i].DefinirMedia()){
+
+      if(Alunos[i].GetIdade() > 13 && Alunos[i].GetAltura() < MediaAltura){
           AlunosAlturaAbaixoDaMedia.push(Alunos[i].GetNome())
-        }
       }
+
     }
 
     return AlunosAlturaAbaixoDaMedia
 
+  }
+
+  ProcurarMaiorAlturaMulheres(): number{
+    let MaiorAltura: number = 0
+
+    for(let index = 0; index < Alunos.length; index++){
+
+      if(Alunos[index].GetAltura() > MaiorAltura && Alunos[index].GetSexo() == "Feminino"){
+        MaiorAltura = Alunos[index].GetAltura()
+      }
+
+    }
+
+    return MaiorAltura
+  }
+
+  ProcurarAlunoMaisNovoMasculino(): string{
+    let MenorIdade: number = 0
+    let NomeAlunoMenorIdade: string
+
+    Alunos.forEach(Finder)
+
+    function Finder(item: object){
+      if(item.GetSexo() == "Masculino"){
+          MenorIdade = item.GetIdade()
+
+          Alunos.forEach(Verificate)
+      }
+    }
+
+    function Verificate(item: object){
+      if(item.GetIdade() < MenorIdade){
+        NomeAlunoMenorIdade = item.GetNome()
+      }
+    }
+
+    return NomeAlunoMenorIdade
   }
 
   DefinirMedia(): number{
@@ -102,20 +140,22 @@ class Aluno {
     }
 
     MediaAltura = MediaAltura / Alunos.length
+
     return MediaAltura
   }
 }
 
+
 let NewAluno1 = new Aluno("Gabriel", 19, 1.70, "Masculino")
 let NewAluno2 = new Aluno("Arthur", 17, 1.80, "Masculino")
-let NewAluno3 = new Aluno("Joao", 20, 1.65, "Masculino")
-let NewAluno4 = new Aluno("Giovanni", 22, 1.80, "Masculino")
-let NewAluno5 = new Aluno("Patrick", 10, 1.75, "Masculino")
+let NewAluno3 = new Aluno("Joao", 13, 1.65, "Masculino")
+let NewAluno4 = new Aluno("Giovanna", 25, 1.63, "Feminino")
+let NewAluno5 = new Aluno("Ana", 19, 1.55, "Feminino")
 
 Alunos.push(NewAluno1, NewAluno2, NewAluno3, NewAluno4, NewAluno5)
 
-NewAluno1.DefinirMedia()
-
 console.log(NewAluno1.ProcurarAlturaAlunos())
+console.log(NewAluno1.ProcurarMaiorAlturaMulheres())
+console.log(NewAluno1.ProcurarAlunoMaisNovoMasculino())
 
 

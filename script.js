@@ -72,15 +72,40 @@ var Aluno = /** @class */ (function () {
         return __classPrivateFieldGet(this, _Aluno_Sexo, "f");
     };
     Aluno.prototype.ProcurarAlturaAlunos = function () {
+        var MediaAltura = this.DefinirMedia();
         var AlunosAlturaAbaixoDaMedia = [];
         for (var i = 0; i < Alunos.length; i++) {
-            if (Alunos[i].GetIdade() > 13) {
-                if (Alunos[i].GetAltura() < Alunos[i].DefinirMedia()) {
-                    AlunosAlturaAbaixoDaMedia.push(Alunos[i].GetNome());
-                }
+            if (Alunos[i].GetIdade() > 13 && Alunos[i].GetAltura() < MediaAltura) {
+                AlunosAlturaAbaixoDaMedia.push(Alunos[i].GetNome());
             }
         }
         return AlunosAlturaAbaixoDaMedia;
+    };
+    Aluno.prototype.ProcurarMaiorAlturaMulheres = function () {
+        var MaiorAltura = 0;
+        for (var index = 0; index < Alunos.length; index++) {
+            if (Alunos[index].GetAltura() > MaiorAltura && Alunos[index].GetSexo() == "Feminino") {
+                MaiorAltura = Alunos[index].GetAltura();
+            }
+        }
+        return MaiorAltura;
+    };
+    Aluno.prototype.ProcurarAlunoMaisNovoMasculino = function () {
+        var MenorIdade = 0;
+        var NomeAlunoMenorIdade;
+        Alunos.forEach(Finder);
+        function Finder(item) {
+            if (item.GetSexo() == "Masculino") {
+                MenorIdade = item.GetIdade();
+                Alunos.forEach(Verificate);
+            }
+        }
+        function Verificate(item) {
+            if (item.GetIdade() < MenorIdade) {
+                NomeAlunoMenorIdade = item.GetNome();
+            }
+        }
+        return NomeAlunoMenorIdade;
     };
     Aluno.prototype.DefinirMedia = function () {
         for (var i = 0; i < Alunos.length; i++) {
@@ -94,9 +119,10 @@ var Aluno = /** @class */ (function () {
 _Aluno_Nome = new WeakMap(), _Aluno_Idade = new WeakMap(), _Aluno_Altura = new WeakMap(), _Aluno_Sexo = new WeakMap();
 var NewAluno1 = new Aluno("Gabriel", 19, 1.70, "Masculino");
 var NewAluno2 = new Aluno("Arthur", 17, 1.80, "Masculino");
-var NewAluno3 = new Aluno("Joao", 20, 1.65, "Masculino");
-var NewAluno4 = new Aluno("Giovanni", 22, 1.80, "Masculino");
-var NewAluno5 = new Aluno("Patrick", 10, 1.75, "Masculino");
+var NewAluno3 = new Aluno("Joao", 13, 1.65, "Masculino");
+var NewAluno4 = new Aluno("Giovanna", 2, 1.63, "Feminino");
+var NewAluno5 = new Aluno("Ana", 19, 1.55, "Feminino");
 Alunos.push(NewAluno1, NewAluno2, NewAluno3, NewAluno4, NewAluno5);
-NewAluno1.DefinirMedia();
 console.log(NewAluno1.ProcurarAlturaAlunos());
+console.log(NewAluno1.ProcurarMaiorAlturaMulheres());
+console.log(NewAluno1.ProcurarAlunoMaisNovoMasculino());
