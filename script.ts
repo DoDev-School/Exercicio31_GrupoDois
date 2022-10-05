@@ -31,54 +31,91 @@
 // }
 // console.log(`ArrayA: ${arrayA} \nArrayB: ${arrayB} \nArrayC: ${arrayC}`);
 
-let alunos: string[] = []
+
+let Alunos: object[] = []
+let MediaAltura: number = 0
+
 class Aluno {
   #Nome: string;
- #Idade: number;
+  #Idade: number;
   #Altura: number;
   #Sexo: string;
-  constructor(nome,idade,altura,sexo){
-    
+
+  constructor(nome: string, idade: number, altura: number, sexo: string){
+    this.DefinirNome(nome)
+    this.DefinirIdade(idade)
+    this.DefinirAltura(altura)
+    this.DefinirSexo(sexo)
   }
-setNome(nome:string){
-  this.#Nome=nome
-}
-getNome(){
-  return this.#Nome
+
+  DefinirNome(nome: string){
+    this.#Nome = nome
+  }
+
+  DefinirIdade(idade: number){
+    this.#Idade = idade
+  }
+
+  DefinirAltura(altura: number){
+    this.#Altura = altura
+  }
+
+  DefinirSexo(sexo: string){
+    this.#Sexo = sexo
+  }
+
+  GetNome(): string{
+    return this.#Nome
+  }
+
+  GetIdade(): number{
+    return this.#Idade
+  }
+
+  GetAltura(): number{
+    return this.#Altura
+  }
+
+  GetSexo(): string{
+    return this.#Sexo
+  }
+
+  ProcurarAlturaAlunos(){
+    let AlunosAlturaAbaixoDaMedia: [] = []
+
+    for(let i = 0; i < Alunos.length; i++){
+      if(Alunos[i].GetIdade() > 13){
+        if(Alunos[i].GetAltura() < Alunos[i].DefinirMedia()){
+          AlunosAlturaAbaixoDaMedia.push(Alunos[i].GetNome())
+        }
+      }
+    }
+
+    return AlunosAlturaAbaixoDaMedia
+
+  }
+
+  DefinirMedia(): number{
+
+    for(let i = 0; i < Alunos.length; i++){
+      MediaAltura = MediaAltura + Alunos[i].GetAltura()
+    }
+
+    MediaAltura = MediaAltura / Alunos.length
+    return MediaAltura
+  }
 }
 
-setIdade(idade:number){
-  this.#Idade=idade
-}
-getIdade(){
-  return this.#Idade
-}
-setAltura(altura:number){
-  this.#Altura=altura
-}
-getAltura(){
-  return this.#Altura
-}
-setSexo(sexo:string){
-  this.#Sexo=sexo
-}
-getSexo(){
-  return this.#Sexo
-}
-QuantidadeDeAlunos(){
+let NewAluno1 = new Aluno("Gabriel", 19, 1.70, "Masculino")
+let NewAluno2 = new Aluno("Arthur", 17, 1.80, "Masculino")
+let NewAluno3 = new Aluno("Joao", 20, 1.65, "Masculino")
+let NewAluno4 = new Aluno("Giovanni", 22, 1.80, "Masculino")
+let NewAluno5 = new Aluno("Patrick", 10, 1.75, "Masculino")
 
-}
-RetornoMaiorAltura(){
+Alunos.push(NewAluno1, NewAluno2, NewAluno3, NewAluno4, NewAluno5)
 
-}
+NewAluno1.DefinirMedia()
 
-  
-}
-  
-}
-  
-  
-}
+console.log(NewAluno1.ProcurarAlturaAlunos())
 
 
-}
