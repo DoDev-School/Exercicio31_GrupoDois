@@ -1,0 +1,23 @@
+{
+  "name": "exercicio31_grupodois",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoDev-School/Exercicio31_GrupoDois.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DoDev-School/Exercicio31_GrupoDois/issues"
+  },
+  "homepage": "https://github.com/DoDev-School/Exercicio31_GrupoDois#readme",
+  "dependencies": {
+    "typescript": "^4.8.4"
+  }
+}
